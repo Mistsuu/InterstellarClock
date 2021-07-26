@@ -1,0 +1,45 @@
+# Clock position
+clockX 960
+clockY 750
+
+# Size of the dot at the middle of the clock
+dotSize 6
+
+# Length of the clock hands
+secondHandLength 204
+minuteHandLength 128
+hourHandLength 80
+
+# Length of the clock tails
+secondTailLength 20
+minuteTailLength 25
+hourTailLength 20
+
+# Thickness of the hands
+hourHandThickness 4.0
+minuteHandThickness 6.0
+secondHandThickness 1.6
+
+# Outer clock size
+clockSize 230
+
+# Configure the marks denoting 1-12 hour
+hourMarkLength 20
+hourMarkThickness 3.0
+hourMarkOpacity 1.0
+
+# Thickness of the quarter mark (between 1-12 hour mark)
+quarterMarkThickness 1.0
+quarterMarkOpacity 0.5
+quarterMarkLength 10
+
+# FPS - can reduce if too lag, but probably not...
+fps 30
+
+# Set time zone
+timeZone 7
+
+# These settings can be played for fun and creativity
+dotOffX 5
+dotOffY 20
+tiltLength 2 
