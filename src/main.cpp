@@ -230,32 +230,38 @@ void HandleLoopLogic()
 	*	Configure the clock hands
 	*/ 
 
-	// Configure hour hand
+	// Configure hour hand/tail
 	point.x         = center.x + clockSize              * cos(PI / 6 * hour + phase);
 	point.y         = center.y + clockSize / tiltFactor * sin(PI / 6 * hour + phase);
 	hourHand[1].x   = (point.x - dot.point.x) * hourHandLength / clockSize + dot.point.x;
 	hourHand[1].y   = (point.y - dot.point.y) * hourHandLength / clockSize + dot.point.y;
-	hourHand[0].x   = (dot.point.x - point.x) * hourTailLength / clockSize + dot.point.x;
-	hourHand[0].y   = (dot.point.y - point.y) * hourTailLength / clockSize + dot.point.y;
 
-	// Configure minute hand
+	point           = getChordEndEllipse(point, dot.point, clockSize, clockSize / tiltFactor, center);
+	hourHand[0].x   = (point.x - dot.point.x) * hourTailLength / clockSize + dot.point.x;
+	hourHand[0].y   = (point.y - dot.point.y) * hourTailLength / clockSize + dot.point.y;
+
+	// Configure minute hand/tail
 	point.x         = center.x + clockSize              * cos(PI / 30 * minute + phase);
 	point.y         = center.y + clockSize / tiltFactor * sin(PI / 30 * minute + phase);
 	minuteHand[1].x = (point.x - dot.point.x) * minuteHandLength / clockSize + dot.point.x;
 	minuteHand[1].y = (point.y - dot.point.y) * minuteHandLength / clockSize + dot.point.y;
-	minuteHand[0].x = (dot.point.x - point.x) * minuteTailLength / clockSize + dot.point.x;
-	minuteHand[0].y = (dot.point.y - point.y) * minuteTailLength / clockSize + dot.point.y;
 
-	// Configure second hand
+	point           = getChordEndEllipse(point, dot.point, clockSize, clockSize / tiltFactor, center);
+	minuteHand[0].x = (point.x - dot.point.x) * minuteTailLength / clockSize + dot.point.x;
+	minuteHand[0].y = (point.y - dot.point.y) * minuteTailLength / clockSize + dot.point.y;
+
+	// Configure second hand/tail
 	point.x         = center.x + clockSize              * cos(PI / 30 * second + phase);
 	point.y         = center.y + clockSize / tiltFactor * sin(PI / 30 * second + phase);
 	secondHand[1].x = (point.x - dot.point.x) * secondHandLength / clockSize + dot.point.x;
 	secondHand[1].y = (point.y - dot.point.y) * secondHandLength / clockSize + dot.point.y;
-	secondHand[0].x = (dot.point.x - point.x) * secondTailLength / clockSize + dot.point.x;
-	secondHand[0].y = (dot.point.y - point.y) * secondTailLength / clockSize + dot.point.y;
+
+	point           = getChordEndEllipse(point, dot.point, clockSize, clockSize / tiltFactor, center);
+	secondHand[0].x = (point.x - dot.point.x) * secondTailLength / clockSize + dot.point.x;
+	secondHand[0].y = (point.y - dot.point.y) * secondTailLength / clockSize + dot.point.y;
 
 	/* 
-		Configure random '4d' rays shooting out of the clock hands
+		Configure random '4d' rays shooting out of the second hand
 	*/
 	for (int i = 0; i < NMAXRAYS; ++i) {
 		float ratioBetweenSecondEndWithDot = rand() * 1.0 / RAND_MAX;
@@ -325,8 +331,8 @@ int APIENTRY wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 	if (GetBackgroundHandle(hDesktop) == FALSE) {
 		MessageBox(
 			NULL,
-			(LPCWSTR)L"Error in finding your damn desktop!",
-			(LPCWSTR)L"Error",
+			(LPCWSTR)L"Error in finding your desktop! Sorry but this seems to be the end of the line :(",
+			(LPCWSTR)L"Sorry",
 			MB_OK
 		);
 		return -2;

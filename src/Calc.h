@@ -43,3 +43,18 @@ inline double get12HourMarkOnClock(
 		return -acos((_cache_quadratic_roots[1] - center.x) / a);
 	return -acos((_cache_quadratic_roots[0] - center.x) / a);
 }
+
+inline D2D1_POINT_2F getChordEndEllipse(
+	D2D1_POINT_2F& A, D2D1_POINT_2F& B,
+	double a, double b,
+	D2D1_POINT_2F& center
+)
+{
+	double m = (B.y - A.y)             / (B.x - A.x);
+	double n = (A.y * B.x - B.y * A.x) / (B.x - A.x);
+	
+	D2D1_POINT_2F end;
+	end.x = 2 * (b * b * center.x - a * a * m * (n - center.y)) / (b * b + sqr(a * m)) - A.x;
+	end.y = m * end.x + n;
+	return end;
+}

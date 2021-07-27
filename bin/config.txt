@@ -1,6 +1,6 @@
 # Clock position
 clockX 960
-clockY 750
+clockY 800
 
 # Size of the dot at the middle of the clock
 dotSize 6
@@ -42,4 +42,4 @@ timeZone 7
 # These settings can be played for fun and creativity
 dotOffX 5
 dotOffY 20
-tiltLength 2 
+tiltFactor 2 
